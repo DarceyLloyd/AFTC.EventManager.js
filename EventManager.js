@@ -1,14 +1,18 @@
 /**
  * Author: Darcey@AllForTheCode.co.uk
  * Date: 20/07/2016
- * REQUIRES: aftc.js
+ * Version: 1.0
+ * Usage examples: See bottom of this file
  */
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-if (!log) {
-	function log($str) {
-		console.log($str);
-	}
+function log(arg) {
+	console.log(arg);
+}
+function getFunctionName(callback) {
+	var name = callback.toString();
+	var reg = /function ([^\(]*)/;
+	return reg.exec(name)[1];
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -115,7 +119,6 @@ var EventManager = (function () {
 				var vo = events[foundOnIndex];
 				for (i = 0; i < vo.dispatchFunctions.length; i++) {
 					if (vo.dispatchFunctions[i] === dispatchFunction) {
-						log("FOUND dispatch function");
 						vo.dispatchFunctions[i] = null;
 						vo.dispatchFunctions.splice(i, 1);
 						break;
@@ -159,9 +162,9 @@ var EventManager = (function () {
 			// log("removeAll("+eventName+")");
 			// log("### BEFORE: [" + events.length + "]");
 			// log(events);
-			for (var i = 0; i < events.length; i++) {
-				log(events[i]);
-			}
+			// for (var i = 0; i < events.length; i++) {
+			// 	log(events[i]);
+			// }
 			
 			if (!eventName || eventName == "" || eventName == null) {
 				events = null;
@@ -192,28 +195,42 @@ var EventManager = (function () {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-// Usage
+// Usage example 1: Adding and Dispatching (calling/firing) Events
 /*
-EventManager.add("tile1", tileSelected1);
-EventManager.add("tile1", tileSelected2);
-EventManager.add("tile1", tileSelected3);
-EventManager.add("tile2", tileSelected2);
-//EventManager.removeAll("tile1");
-//EventManager.removeAll();
-//EventManager.remove("tile1", tileSelected1);
-EventManager.dispatch("tile1");
-EventManager.dispatch("tile2");
+ function myEventDispatchHandler1(){ console.log("myEventDispatchHandler1(): Executed"); }
+ function myEventDispatchHandler2(){ console.log("myEventDispatchHandler2(): Executed"); }
+ EventManager.add("MyEvent",myEventDispatchHandler1);
+ EventManager.add("MyEvent",myEventDispatchHandler2);
+ EventManager.dispatch("MyEvent");
+ */
 
-function tileSelected1() {
-	log("## tileSelected1()");
-}
-function tileSelected2() {
-	log("## tileSelected2()");
-}
-function tileSelected3() {
-	log("## tileSelected3()");
-}
-function tileSelected4() {
-	log("## tileSelected4()");
-}
+// Usage example 2: Adding and Removing events
+/*
+ function myEventDispatchHandler1(){ console.log("myEventDispatchHandler1(): Executed"); }
+ function myEventDispatchHandler2(){ console.log("myEventDispatchHandler2(): Executed"); }
+ EventManager.add("MyEvent",myEventDispatchHandler1);
+ EventManager.add("MyEvent",myEventDispatchHandler2);
+ EventManager.remove("MyEvent",myEventDispatchHandler1);
+ EventManager.dispatch("MyEvent");
+ */
+
+// Usage example 3: Cleaning a single event up
+/*
+ function myEventDispatchHandler1(){ console.log("myEventDispatchHandler1(): Executed"); }
+ function myEventDispatchHandler2(){ console.log("myEventDispatchHandler2(): Executed"); }
+ EventManager.add("MyEvent",myEventDispatchHandler1);
+ EventManager.add("MyOtherEvent",myEventDispatchHandler2);
+ EventManager.removeAll("MyEvent");
+ EventManager.dispatch("MyEvent");
+ */
+
+// Usage example 4: Cleaning everything up
+/*
+function myEventDispatchHandler1(){ console.log("myEventDispatchHandler1(): Executed"); }
+function myEventDispatchHandler2(){ console.log("myEventDispatchHandler2(): Executed"); }
+EventManager.add("MyEvent1",myEventDispatchHandler1);
+EventManager.add("MyEvent2",myEventDispatchHandler2);
+EventManager.removeAll();
+EventManager.dispatch("MyEvent1");
+EventManager.dispatch("MyEvent2");
 */
