@@ -2,15 +2,19 @@
 A JavaScript Event Manager (add,dispatch,remove,removeAll)
 
 # Usage example 1: Adding and Dispatching (calling/firing) Events
+`
 function myEventDispatchHandler1(){ console.log("myEventDispatchHandler1(): Executed"); }
 function myEventDispatchHandler2(){ console.log("myEventDispatchHandler2(): Executed"); }
 EventManager.add("MyEvent",myEventDispatchHandler1);
 EventManager.add("MyEvent",myEventDispatchHandler2);
 EventManager.dispatch("MyEvent");
+`
 
 Console result:
+`
 myEventDispatchHandler1(): Executed
 myEventDispatchHandler2(): Executed
+`
 
 
 
