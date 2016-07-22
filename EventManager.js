@@ -129,6 +129,11 @@ var EventManager = (function () {
 				log("EventManager: WARNING: Cannot remove dispatch function from event [" + eventName + "] which doesn't exist!");
 			}
 			
+			// If no functions for dispatch on event name remaining remove the event
+			if (vo.dispatchFunctions.length < 1){
+				this.removeAll(eventName);
+			}
+			
 			// log("### AFTER: [" + events.length + "]");
 			// log(events);
 			// for (i = 0; i < events.length; i++) {
