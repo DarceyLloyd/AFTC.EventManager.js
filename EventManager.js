@@ -31,12 +31,7 @@ var EventManager = (function () {
 	var events = [];
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	var privateMethod = function () {
-		log("privateMethod();")
-	};
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	return {
@@ -78,7 +73,7 @@ var EventManager = (function () {
 				if (!functionAlreadyAdded) {
 					events[foundOnIndex].dispatchFunctions.push(dispatchFunction);
 				} else {
-					log("EventManager: Event [" + eventName + "] already dispatches a function specified");
+					log("EventManager.add: Event [" + eventName + "] already dispatches a function named [" + getFunctionName(dispatchFunction)+ "]");
 				}
 			}
 			
@@ -92,7 +87,7 @@ var EventManager = (function () {
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		remove: function (eventName, dispatchFunction) {
 			if (dispatchFunction == "" || dispatchFunction == null || !dispatchFunction) {
-				log("EventManager: WARNING: remove() requires 2 params, event name and dispatch function.");
+				log("EventManager.remove: Incorrect use of remove function, check args.");
 				return;
 			}
 			
@@ -126,7 +121,7 @@ var EventManager = (function () {
 				}
 				
 			} else {
-				log("EventManager: WARNING: Cannot remove dispatch function from event [" + eventName + "] which doesn't exist!");
+				log("EventManager.remove: Cannot remove dispatch function from event [" + eventName + "] which doesn't exist!");
 			}
 			
 			// If no functions for dispatch on event name remaining remove the event
@@ -157,7 +152,7 @@ var EventManager = (function () {
 				}
 			}
 			if (!eventExists) {
-				log("EventManager: WARNING: You are dispatching an event which doesn't exist!");
+				log("EventManager.dispatch: Event [" + eventName + "] doesn't exist!");
 				return false;
 			}
 		},
