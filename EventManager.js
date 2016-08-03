@@ -1,6 +1,6 @@
 /**
  * Author: Darcey@AllForTheCode.co.uk
- * Date: 20/07/2016
+ * Date: 07/2016
  * Version: 1.0
  * Usage examples: See bottom of this file
  */
@@ -92,7 +92,7 @@ var EventManager = (function(){
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		remove:function(eventName, dispatchFunction){
 			if (dispatchFunction == "" || dispatchFunction == null || !dispatchFunction){
-				log("EventManager.remove: Incorrect use of remove function, check args.");
+				log("EventManager.remove: Incorrect use of remove function for event ["+eventName+"], arg for dispatchFunction is missing (if you want to remove the entire event use removeAll.");
 				return;
 			}
 			
@@ -103,9 +103,9 @@ var EventManager = (function(){
 			// for (var i = 0; i < events.length; i++) {
 			// 	log(events[i]);
 			// }
-			
+
 			var vo;
-			
+
 			// Check event exists
 			var eventExists = false;
 			var foundOnIndex = -1;
