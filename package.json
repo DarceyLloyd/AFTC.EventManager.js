@@ -1,0 +1,25 @@
+{
+  "name": "aftc.eventmanager",
+  "version": "1.0.2",
+  "description": "A centralised event management system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarceyLloyd/AFTC.EventManager.js.git"
+  },
+  "author": "darcey@allforthecode.co.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarceyLloyd/AFTC.EventManager.js/issues"
+  },
+  "homepage": "https://github.com/DarceyLloyd/AFTC.EventManager.js#readme",
+  "devDependencies": {
+    "aftc.js": "^1.0.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0"
+  }
+}
