@@ -3,7 +3,7 @@
 
 A JavaScript Event Manager (add,dispatch,remove,removeAll). If you want a central place to manage events the AFTC.EventManager can help. Useful in root controllers, application logic hubs etc.
 
-EG: https://darceylloyd.github.io/aftc.eventmanager.js/tests/
+EG: http://dev.aftc.co.uk/git/AFTC.EventManager.js/tests/
 
 
 
